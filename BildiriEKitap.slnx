@@ -1,0 +1,6 @@
+<Solution>
+  <Folder Name="/backend/">
+    <Project Path="backend/EKitap.Api/EKitap.Api.csproj" />
+    <Project Path="backend/EKitap.Tests/EKitap.Tests.csproj" />
+  </Folder>
+</Solution>

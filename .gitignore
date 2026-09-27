@@ -1,0 +1,10 @@
+bin/
+obj/
+**/wwwroot/uploads/**
+**/wwwroot/ebooks/**
+!**/wwwroot/.gitkeep
+node_modules/
+dist/
+samples/
+*.user
+appsettings.*.local.json
