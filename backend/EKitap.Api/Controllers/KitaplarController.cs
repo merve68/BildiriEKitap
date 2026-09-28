@@ -50,6 +50,7 @@ public class KitaplarController(IKitapService kitapService) : ControllerBase
         if (pdf is null)
             return NotFound(new { message = "PDF henüz hazır değil." });
 
-        return File(pdf.Value.Content, "application/pdf", pdf.Value.FileName);
+        Response.Headers.ContentDisposition = $"inline; filename=\"{pdf.Value.FileName}\"";
+        return File(pdf.Value.Content, "application/pdf");
     }
 }

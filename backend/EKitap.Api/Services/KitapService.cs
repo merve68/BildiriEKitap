@@ -64,11 +64,25 @@ public class KitapService(
         {
             var file = files[index];
             var safeName = Path.GetFileName(file.FileName);
+            await using var input = file.OpenReadStream();
+            var header = new byte[4];
+            var read = await input.ReadAsync(header, cancellationToken);
+            if (read < 4 || header[0] != 0x50 || header[1] != 0x4B || header[2] != 0x03 || header[3] != 0x04)
+                throw new InvalidOperationException($"{safeName} geçerli bir Word belgesi değil.");
+            if (input.CanSeek)
+                input.Position = 0;
+
             var storedName = $"{index + 1:00}_{safeName}";
             var fullPath = Path.Combine(folder, storedName);
 
             await using var stream = File.Create(fullPath);
-            await file.CopyToAsync(stream, cancellationToken);
+            if (input.CanSeek)
+                await input.CopyToAsync(stream, cancellationToken);
+            else
+            {
+                await stream.WriteAsync(header, cancellationToken);
+                await input.CopyToAsync(stream, cancellationToken);
+            }
 
             kitap.Bildiriler.Add(new Bildiri
             {

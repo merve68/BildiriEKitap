@@ -1,3 +1,4 @@
+using System.IO.Packaging;
 using DocumentFormat.OpenXml.Packaging;
 using DocumentFormat.OpenXml.Wordprocessing;
 
@@ -16,7 +17,18 @@ public class WordReader : IWordReader
 {
     public WordDocumentContent Read(string path, string fileName)
     {
-        using var document = WordprocessingDocument.Open(path, false);
+        WordprocessingDocument document;
+        try
+        {
+            document = WordprocessingDocument.Open(path, false);
+        }
+        catch (Exception ex) when (ex is FileFormatException or OpenXmlPackageException or InvalidDataException)
+        {
+            throw new InvalidOperationException($"{fileName} açılamadı. Dosya bozuk veya geçerli bir Word belgesi değil.");
+        }
+
+        using (document)
+        {
         var body = document.MainDocumentPart?.Document?.Body
             ?? throw new InvalidOperationException($"{fileName} okunamadı. Belge gövdesi boş.");
 
@@ -44,6 +56,7 @@ public class WordReader : IWordReader
 
         var title = ResolveTitle(cleaned, fileName);
         return new WordDocumentContent(title, cleaned);
+        }
     }
 
     private static void AppendParagraph(List<WordParagraph> target, Paragraph paragraph)

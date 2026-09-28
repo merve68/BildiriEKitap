@@ -115,6 +115,7 @@ public class EbookPdfService : IEbookPdfService
     private static void ApplyPage(PageDescriptor page)
     {
         page.Size(PageSizes.A4);
+        page.PageColor(Colors.White);
         page.MarginHorizontal(2, Unit.Centimetre);
         page.MarginTop(1.8f, Unit.Centimetre);
         page.MarginBottom(1.6f, Unit.Centimetre);

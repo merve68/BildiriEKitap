@@ -69,7 +69,7 @@ Testler: `dotnet test`.
 
 ## Tasarım
 
-Masaüstünde sol tarafta yükleme, sağda kitap görüntüleyici vardır. 800 pikselin altında paneller alt alta geçer; dosya listesi, hata ve PDF kontrolleri dar ekranda da kullanılabilir. Görüntüleyici sayfa sayfa açılır, içindekiler satırı ilgili sayfaya gider, PDF indirilebilir.
+Masaüstünde solda ad, dosya bırakma alanı, ilerleme çubuğu ve sıralanabilir bildiri listesi vardır; sağda kitap açılır. Üstte üç adım (ad, 10 bildiri, PDF) tamamlanan işi gösterir. 800 pikselin altında paneller alt alta geçer ve oluşturma düğmesi ekranın altında sabit kalır. PDF sayfa içinde görüntülenir ve indirilebilir.
 
 ## Bilinen sınırlar
 
