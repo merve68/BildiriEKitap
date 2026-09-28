@@ -71,10 +71,5 @@ Testler: `dotnet test`.
 
 Masaüstünde solda ad, dosya bırakma alanı, ilerleme çubuğu ve sıralanabilir bildiri listesi vardır; sağda kitap açılır. Üstte üç adım (ad, 10 bildiri, PDF) tamamlanan işi gösterir. 800 pikselin altında paneller alt alta geçer ve oluşturma düğmesi ekranın altında sabit kalır. PDF sayfa içinde görüntülenir ve indirilebilir.
 
-## Bilinen sınırlar
 
-Word fontları, görseller ve karmaşık tablolar birebir korunmaz. Metin ve satır yapısı aktarılır. Kullanıcı girişi yoktur. Üretim tek süreç içindeki bir kuyrukta yürür.
 
-## Yapay zeka kullanımı
-
-Bu çözümün iskeleti, API akışı, iletişim temizliği, PDF sayfa hesabı ve React arayüzü Cursor içindeki bir kod asistanıyla üretildi. Kütüphane seçimi, tablo ilişkisi ve temizleme kuralları case metnine göre tarif edilip koda döküldü; derleme ve testler yerel SDK ile çalıştırıldı.
